@@ -1,17 +1,25 @@
-# Refresher
-
-My custom Pull to Refresh Widget, mimicking iOS Pull to Refresh except for the toolbar
-
-## Installation
-
-First, add `refresher` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
-
 ```
-refresher: ^0.0.3+2
-```
+import 'dart:async';
 
-## Example
-```
+import 'package:flutter/material.dart';
+import 'package:refresher/refresher.dart';
+import 'package:refresher_example/infinite_demo.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: RefresherDemo(),
+    );
+  }
+}
+
 class RefresherDemo extends StatefulWidget {
   @override
   _RefresherDemoState createState() => _RefresherDemoState();
@@ -61,4 +69,5 @@ class _RefresherDemoState extends State<RefresherDemo> with SingleTickerProvider
     );
   }
 }
+
 ```
