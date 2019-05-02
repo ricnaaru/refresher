@@ -15,13 +15,13 @@ import 'package:flutter/material.dart';
 ///    scroll behavior on iOS.
 ///  * [ClampingScrollPhysics], which is the analogous physics for Android's
 ///    clamping behavior.
-class NotBouncingScrollPhysics extends ScrollPhysics {
+class AlwaysBouncingScrollPhysics extends ScrollPhysics {
   /// Creates scroll physics that bounce back from the edge.
-  const NotBouncingScrollPhysics({ScrollPhysics parent}) : super(parent: parent);
+  const AlwaysBouncingScrollPhysics({ ScrollPhysics parent }) : super(parent: parent);
 
   @override
-  NotBouncingScrollPhysics applyTo(ScrollPhysics ancestor) {
-    return NotBouncingScrollPhysics(parent: buildParent(ancestor));
+  AlwaysBouncingScrollPhysics applyTo(ScrollPhysics ancestor) {
+    return AlwaysBouncingScrollPhysics(parent: buildParent(ancestor));
   }
 
   /// The multiple applied to overscroll to make it appear that scrolling past
@@ -39,16 +39,17 @@ class NotBouncingScrollPhysics extends ScrollPhysics {
     assert(offset != 0.0);
     assert(position.minScrollExtent <= position.maxScrollExtent);
 
-    if (!position.outOfRange) return offset;
+    if (!position.outOfRange)
+      return offset;
 
     final double overscrollPastStart = math.max(position.minScrollExtent - position.pixels, 0.0);
     final double overscrollPastEnd = math.max(position.pixels - position.maxScrollExtent, 0.0);
     final double overscrollPast = math.max(overscrollPastStart, overscrollPastEnd);
-    final bool easing =
-        (overscrollPastStart > 0.0 && offset < 0.0) || (overscrollPastEnd > 0.0 && offset > 0.0);
+    final bool easing = (overscrollPastStart > 0.0 && offset < 0.0)
+        || (overscrollPastEnd > 0.0 && offset > 0.0);
 
     final double friction = easing
-        // Apply less resistance when easing the overscroll vs tensioning.
+    // Apply less resistance when easing the overscroll vs tensioning.
         ? frictionFactor((overscrollPast - offset.abs()) / position.viewportDimension)
         : frictionFactor(overscrollPast / position.viewportDimension);
     final double direction = offset.sign;
@@ -61,7 +62,8 @@ class NotBouncingScrollPhysics extends ScrollPhysics {
     double total = 0.0;
     if (extentOutside > 0) {
       final double deltaToLimit = extentOutside / gamma;
-      if (absDelta < deltaToLimit) return absDelta * gamma;
+      if (absDelta < deltaToLimit)
+        return absDelta * gamma;
       total += extentOutside;
       absDelta -= deltaToLimit;
     }
@@ -69,64 +71,22 @@ class NotBouncingScrollPhysics extends ScrollPhysics {
   }
 
   @override
-  double applyBoundaryConditions(ScrollMetrics position, double value) {
-    assert(() {
-      if (value == position.pixels) {
-        throw FlutterError(
-            '$runtimeType.applyBoundaryConditions() was called redundantly.\n'
-                'The proposed new position, $value, is exactly equal to the current position of the '
-                'given ${position.runtimeType}, ${position.pixels}.\n'
-                'The applyBoundaryConditions method should only be called when the value is '
-                'going to actually change the pixels, otherwise it is redundant.\n'
-                'The physics object in question was:\n'
-                '  $this\n'
-                'The position object in question was:\n'
-                '  $position\n'
-        );
-      }
-      return true;
-    }());
-    if (value < position.pixels && position.pixels <= position.minScrollExtent) // underscroll
-      return value - position.pixels;
-    if (position.maxScrollExtent <= position.pixels && position.pixels < value) // overscroll
-      return 0.0;
-    if (value < position.minScrollExtent && position.minScrollExtent < position.pixels) // hit top edge
-      return value - position.minScrollExtent;
-    if (position.pixels < position.maxScrollExtent && position.maxScrollExtent < value) // hit bottom edge
-      return value - position.maxScrollExtent;
-    return 0.0;
-  }
+  double applyBoundaryConditions(ScrollMetrics position, double value) => 0.0;
 
   @override
   Simulation createBallisticSimulation(ScrollMetrics position, double velocity) {
     final Tolerance tolerance = this.tolerance;
-    if (position.outOfRange) {
-      double end;
-      if (position.pixels > position.maxScrollExtent)
-        end = position.maxScrollExtent;
-      if (position.pixels < position.minScrollExtent)
-        end = position.minScrollExtent;
-      assert(end != null);
-      return ScrollSpringSimulation(
-          spring,
-          position.pixels,
-          end,
-          math.min(0.0, velocity),
-          tolerance: tolerance
-      );
-    }
-    if (velocity.abs() < tolerance.velocity)
-      return null;
-    if (velocity > 0.0 && position.pixels >= position.maxScrollExtent)
-      return null;
-    if (velocity < 0.0 && position.pixels <= position.minScrollExtent)
-      return null;
-
-      return ClampingScrollSimulation(
+    if (velocity.abs() >= tolerance.velocity || position.outOfRange) {
+      return BouncingScrollSimulation(
+        spring: spring,
         position: position.pixels,
-        velocity: velocity,
+        velocity: velocity * 0.91, // TODO(abarth): We should move this constant closer to the drag end.
+        leadingExtent: position.minScrollExtent,
+        trailingExtent: position.maxScrollExtent,
         tolerance: tolerance,
       );
+    }
+    return null;
   }
 
   // The ballistic simulation here decelerates more slowly than the one for
@@ -151,12 +111,15 @@ class NotBouncingScrollPhysics extends ScrollPhysics {
   /// calculations.
   @override
   double carriedMomentum(double existingVelocity) {
-    return 0.0; //existingVelocity.sign *
-//        math.min(0.000816 * math.pow(existingVelocity.abs(), 1.967).toDouble(), 40000.0);
+    return existingVelocity.sign *
+        math.min(0.000816 * math.pow(existingVelocity.abs(), 1.967).toDouble(), 40000.0);
   }
 
   // Eyeballed from observation to counter the effect of an unintended scroll
   // from the natural motion of lifting the finger after a scroll.
   @override
   double get dragStartDistanceMotionThreshold => 3.5;
+
+  @override
+  bool shouldAcceptUserOffset(ScrollMetrics position) => true;
 }

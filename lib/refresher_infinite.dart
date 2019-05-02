@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:refresher/always_bouncing_physics.dart';
 import 'package:refresher/infinite_list_view.dart';
 import 'package:refresher/loading_animation.dart';
 import 'package:refresher/not_bouncing_physics.dart';
@@ -27,8 +28,7 @@ class InfiniteRefresher extends StatefulWidget {
     this.remote,
     this.widgetBuilder,
     this.fetcher,
-  })
-      : this.vanishAfterDrag = vanishAfterDrag ?? false,
+  })  : this.vanishAfterDrag = vanishAfterDrag ?? false,
         this.loadingSize = loadingSize ?? 50.0,
         this.margin = margin ?? EdgeInsets.all(16.0);
 
@@ -82,6 +82,9 @@ class _InfiniteRefresherState extends State<InfiniteRefresher> with TickerProvid
         });
       });
     }
+
+    print("_refreshing => $_refreshing");
+
     if (_show && _sizeAnimationController.value == 0.0) _sizeAnimationController.value = 1.0;
     _tempRefreshController.thickness = 4.0 * _height / _maxHeight;
 
@@ -112,8 +115,8 @@ class _InfiniteRefresherState extends State<InfiniteRefresher> with TickerProvid
                       scrollPhysics: _refreshing && !_show && !widget.vanishAfterDrag
                           ? RefreshIndicatorPhysics()
                           : _refreshing || _mayRefresh
-                          ? AlwaysScrollableScrollPhysics()
-                          : NotBouncingScrollPhysics(),
+                              ? AlwaysBouncingScrollPhysics()
+                              : NotBouncingScrollPhysics(),
                       remote: widget.remote,
                       widgetBuilder: widget.widgetBuilder,
                       fetcher: widget.fetcher,
@@ -149,7 +152,9 @@ class _InfiniteRefresherState extends State<InfiniteRefresher> with TickerProvid
       if (!_show)
         try {
           //prevent error caused by infinite list view right after there is no more data while trying to refetch it
-          if (notification.metrics.pixels < notification.metrics.maxScrollExtent)
+          if ((notification.metrics.pixels < notification.metrics.maxScrollExtent &&
+              notification.metrics.maxScrollExtent > 0.0) ||
+              notification.metrics.maxScrollExtent == 0.0)
             setState(() {
               _mayPerform = true;
             });

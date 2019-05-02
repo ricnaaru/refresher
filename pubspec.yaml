@@ -1,8 +1,8 @@
 name: refresher
 description: Customize Pull to Refresh Widget
-version: 0.0.3+2
+version: 0.0.4+1
 author: Richardo <richardothayeb@gmail.com>
-homepage: https://github.com/ricnaaru
+homepage: https://github.com/ricnaaru/refresher/tree/master
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:refresher/refresher.dart';
@@ -26,8 +27,19 @@ class RefresherDemo extends StatefulWidget {
 
 class _RefresherDemoState extends State<RefresherDemo> with SingleTickerProviderStateMixin {
   String _title = "Refresher Demo";
+  List<Widget> _children = [];
 
   double percentage = 0.0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _children = List.generate(
+      Random().nextInt(100),
+          (index) => Text("Here is $index"),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,13 +70,13 @@ class _RefresherDemoState extends State<RefresherDemo> with SingleTickerProvider
             if (this.mounted)
               setState(() {
                 _title = "Refresher Demo";
+                _children = List.generate(
+                  Random().nextInt(100),
+                  (index) => Text("Here is $index"),
+                );
               });
           },
-          child: Column(
-              children: List.generate(
-            100,
-            (index) => Text("Here is $index"),
-          ))),
+          child: Column(children: _children)),
     );
   }
 }

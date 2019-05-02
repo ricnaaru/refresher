@@ -1,3 +1,11 @@
+## 0.0.4+1
+
+* Documentation fix
+
+## 0.0.4
+
+* Fix Android AlwaysScrollPhysics clamping problem.
+
 ## 0.0.3+2
 
 * Disable Refresh when doing Fetch More Data and vice versa.

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:refresher/always_bouncing_physics.dart';
 import 'package:refresher/loading_animation.dart';
 import 'package:refresher/not_bouncing_physics.dart';
 import 'package:refresher/refresh_indicator_physics.dart';
@@ -110,7 +111,7 @@ class _RefresherState extends State<Refresher> with TickerProviderStateMixin {
                       physics: _refreshing && !_show && !widget.vanishAfterDrag
                           ? RefreshIndicatorPhysics()
                           : _refreshing || _mayRefresh
-                              ? AlwaysScrollableScrollPhysics()
+                              ? AlwaysBouncingScrollPhysics()
                               : NotBouncingScrollPhysics(),
                       child: widget.child,
                     ),

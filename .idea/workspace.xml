@@ -14,67 +14,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="977678210">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="8" />
-          <entry key="project.open.time.10" value="1" />
-          <entry key="project.open.time.21" value="2" />
-          <entry key="project.open.time.24" value="1" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="9" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="LICENSE" value="2" />
-          <entry key="dart" value="29" />
-          <entry key="md" value="9" />
-          <entry key="yaml" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="Dart" value="29" />
-          <entry key="PLAIN_TEXT" value="11" />
-          <entry key="YAML" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="dart" value="4968" />
-          <entry key="json" value="3" />
-          <entry key="lock" value="9" />
-          <entry key="md" value="598" />
-          <entry key="plist" value="2" />
-          <entry key="podspec" value="3" />
-          <entry key="properties" value="4" />
-          <entry key="yaml" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="Dart" value="4968" />
-          <entry key="JSON" value="3" />
-          <entry key="PLAIN_TEXT" value="612" />
-          <entry key="Properties" value="4" />
-          <entry key="YAML" value="5" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/refresher.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="112" column="61" selection-start-line="112" selection-start-column="61" selection-end-line="112" selection-end-column="61" />
+            <state relative-caret-position="2775">
+              <caret line="191" column="47" selection-start-line="191" selection-start-column="47" selection-end-line="191" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -82,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+            <state relative-caret-position="419">
+              <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -92,28 +38,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/README.md">
+        <entry file="file://$PROJECT_DIR$/pubspec.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="71" selection-start-line="71" selection-end-line="71" />
+            <state relative-caret-position="30">
+              <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/widgets/navigator.dart">
+        <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13530">
-              <caret line="916" column="94" selection-start-line="916" selection-start-column="32" selection-end-line="916" selection-end-column="94" />
+            <state relative-caret-position="225">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/example/lib/infinite_demo.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+            <state relative-caret-position="915">
+              <caret line="65" column="1" lean-forward="true" selection-start-line="6" selection-end-line="65" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -121,17 +67,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/refresher_infinite.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
+            <state relative-caret-position="210">
+              <caret line="117" column="59" selection-start-line="117" selection-start-column="32" selection-end-line="117" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/animation/animation_controller.dart">
+        <entry file="file://$PROJECT_DIR$/lib/always_bouncing_physics.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3435">
-              <caret line="243" column="20" selection-start-line="243" selection-start-column="20" selection-end-line="243" selection-end-column="20" />
+            <state relative-caret-position="210">
+              <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -151,8 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="930">
-              <caret line="62" column="1" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
+            <state relative-caret-position="149">
+              <caret line="65" column="12" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -180,11 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>illiseconds: 2000</find>
-      <find>0.0.1</find>
-      <find>clamp</find>
-      <find>applyto</find>
-      <find>.percentage =</find>
       <find>0.0.1+1</find>
       <find>scrollPhysicsGetter</find>
       <find>_scrollPhysicsGetter</find>
@@ -200,45 +144,64 @@
       <find>0.0.2</find>
       <find>remote</find>
       <find>0.0.3</find>
-      <find>generate</find>
       <find>0.0.3+1</find>
-      <find>100</find>
       <find>50</find>
+      <find>spring</find>
+      <find>shouldAcceptUserOffset</find>
+      <find>applyTo</find>
+      <find>BouncingScrollPhysics</find>
+      <find>always</find>
+      <find>fetching</find>
+      <find>onrefresher</find>
+      <find>onrefresh</find>
+      <find>maxscro</find>
+      <find>minscr</find>
+      <find>generate</find>
+      <find>100</find>
+      <find>0.0.3+2</find>
     </findStrings>
+    <replaceStrings>
+      <replace>AltBouncingScrollPhysics</replace>
+    </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pubspec.yaml" />
-        <option value="$PROJECT_DIR$/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/lib/p.dart" />
         <option value="$PROJECT_DIR$/lib/refresh_indicator_physics.dart" />
         <option value="$PROJECT_DIR$/example/lib/mainb.dart" />
         <option value="$PROJECT_DIR$/lib/refresherla.dart" />
         <option value="$PROJECT_DIR$/lib/loading_animation.dart" />
-        <option value="$PROJECT_DIR$/example/lib/main.dart" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/example/README.md" />
         <option value="$PROJECT_DIR$/lib/infinite_list_view.dart" />
         <option value="$PROJECT_DIR$/example/lib/infinite_demo.dart" />
         <option value="$PROJECT_DIR$/lib/refresher_infinite.dart" />
+        <option value="$PROJECT_DIR$/lib/alt_bouncing_physics.dart" />
         <option value="$PROJECT_DIR$/lib/refresher.dart" />
+        <option value="$PROJECT_DIR$/example/lib/main.dart" />
+        <option value="$PROJECT_DIR$/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/ios/refresher.podspec" />
+        <option value="$PROJECT_DIR$/android/local.properties" />
+        <option value="$PROJECT_DIR$/example/ios/Pods/Manifest.lock" />
+        <option value="$PROJECT_DIR$/example/ios/Pods/Local Podspecs/refresher.podspec.json" />
+        <option value="$PROJECT_DIR$/example/pubspec.lock" />
+        <option value="$PROJECT_DIR$/example/ios/Podfile.lock" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="22" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="798" />
+    <option name="height" value="826" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -265,9 +228,10 @@
           </expand>
           <select />
         </subPane>
-        <option name="show-excluded-files" value="false" />
       </pane>
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -278,8 +242,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/example/lib" />
       <recent name="$PROJECT_DIR$/lib" />
+      <recent name="$PROJECT_DIR$/example/lib" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -308,9 +272,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="798" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1440" height="826" extended-state="6" />
     <layout>
+      <window_info id="Resources Explorer" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
       <window_info id="Captures" order="1" side_tool="true" />
       <window_info id="Structure" order="2" side_tool="true" />
@@ -320,12 +284,12 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="1" sideWeight="0.49928468" visible="true" weight="0.33569404" />
+      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49928468" weight="0.33569404" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="4" />
       <window_info anchor="bottom" id="Debug" order="5" />
-      <window_info anchor="bottom" id="Terminal" order="6" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="6" visible="true" weight="0.32833788" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5007153" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
@@ -339,45 +303,9 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
     </layout>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/widgets/scroll_physics.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5550">
-          <caret line="383" column="31" selection-start-line="383" selection-start-column="24" selection-end-line="383" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/widgets/scroll_metrics.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="89" column="24" selection-start-line="79" selection-start-column="34" selection-end-line="93" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/material/refresh_indicator.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="90" column="57" selection-start-line="90" selection-start-column="57" selection-end-line="90" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/widgets/scroll_metrics.dart" />
+    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/material/refresh_indicator.dart" />
     <entry file="file://$PROJECT_DIR$/lib/refresh_indicator_physics.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -394,34 +322,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/example/lib/mainb.dart" />
     <entry file="file://$PROJECT_DIR$/lib/refresherla.dart" />
-    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/widgets/scroll_view.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10395">
-          <caret line="707" column="6" selection-start-line="707" selection-start-column="6" selection-end-line="707" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/widgets/single_child_scroll_view.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2610">
-          <caret line="185" column="8" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/widgets/scroll_view.dart" />
+    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/widgets/single_child_scroll_view.dart" />
     <entry file="file://$PROJECT_DIR$/lib/not_bouncing_physics.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1425">
           <caret line="98" selection-start-line="98" selection-end-line="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -432,17 +338,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/widgets/navigator.dart">
+    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/widgets/navigator.dart" />
+    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/animation/animation_controller.dart" />
+    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/widgets/scroll_physics.dart" />
+    <entry file="file://$PROJECT_DIR$/lib/refresher.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13530">
-          <caret line="916" column="94" selection-start-line="916" selection-start-column="32" selection-end-line="916" selection-end-column="94" />
+        <state relative-caret-position="2775">
+          <caret line="191" column="47" selection-start-line="191" selection-start-column="47" selection-end-line="191" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../SDK/Flutter/flutter/packages/flutter/lib/src/animation/animation_controller.dart">
+    <entry file="file://$PROJECT_DIR$/lib/always_bouncing_physics.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3435">
-          <caret line="243" column="20" selection-start-line="243" selection-start-column="20" selection-end-line="243" selection-end-column="20" />
+        <state relative-caret-position="210">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -456,13 +368,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="62" column="1" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/loading_animation.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
@@ -473,24 +378,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/infinite_demo.dart">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        <state relative-caret-position="149">
+          <caret line="65" column="12" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/refresher_infinite.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
+        <state relative-caret-position="210">
+          <caret line="117" column="59" selection-start-line="117" selection-start-column="32" selection-end-line="117" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/refresher.dart">
+    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="112" column="61" selection-start-line="112" selection-start-column="61" selection-end-line="112" selection-end-column="61" />
+        <state relative-caret-position="419">
+          <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/lib/infinite_demo.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="65" column="1" lean-forward="true" selection-start-line="6" selection-end-line="65" selection-end-column="1" />
         </state>
       </provider>
     </entry>
