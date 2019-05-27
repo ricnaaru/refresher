@@ -7,7 +7,7 @@ My custom Pull to Refresh Widget, mimicking iOS Pull to Refresh except for the t
 First, add `refresher` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
 ```
-refresher: ^0.0.4+1
+refresher: ^0.0.4+2
 ```
 
 ## Example

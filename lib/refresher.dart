@@ -142,6 +142,8 @@ class _RefresherState extends State<Refresher> with TickerProviderStateMixin {
   }
 
   bool _handleScrollNotification(ScrollNotification notification) {
+    if (notification.metrics.axis != Axis.vertical) return false;
+
     if (notification is ScrollStartNotification) {
       if (!_show)
         try {

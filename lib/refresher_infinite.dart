@@ -148,6 +148,8 @@ class _InfiniteRefresherState extends State<InfiniteRefresher> with TickerProvid
   }
 
   bool _handleScrollNotification(ScrollNotification notification) {
+    if (notification.metrics.axis != Axis.vertical) return false;
+
     if (notification is ScrollStartNotification) {
       if (!_show)
         try {

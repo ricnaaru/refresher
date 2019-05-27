@@ -1,3 +1,7 @@
+## 0.0.4+2
+
+* Refresher and Infinite Refresher only supports vertical axis
+
 ## 0.0.4+1
 
 * Documentation fix

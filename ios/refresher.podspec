@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'refresher'
-  s.version          = '0.0.4+1'
+  s.version          = '0.0.4+2'
   s.summary          = 'Customize Pull to Refresh Widget'
   s.description      = <<-DESC
 Customize Pull to Refresh Widget
