@@ -1,6 +1,9 @@
 ## 0.0.4+2
 
 * Refresher and Infinite Refresher only supports vertical axis
+* Because NotificationListener<ScrollNotification> will be triggered too when its child/ren scroll
+* Ideally there will be no vertical scrollable inside another vertical scrollable
+* that's why to prevent this issue, _handleScrollNotification only fired when it's vertical scrolling
 
 ## 0.0.4+1
 
