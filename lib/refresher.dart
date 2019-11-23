@@ -46,6 +46,7 @@ class _RefresherState extends State<Refresher> with TickerProviderStateMixin {
   LoadingController _tempRefreshController = LoadingController();
   LoadingController _refreshController = LoadingController(thickness: 4.0);
   double percentage = 0.0;
+  bool isBuilding = false;
 
   @override
   void initState() {
@@ -53,7 +54,8 @@ class _RefresherState extends State<Refresher> with TickerProviderStateMixin {
     _maxHeight = widget.loadingSize + widget.margin.vertical;
     RefreshIndicatorPhysics.height = _maxHeight;
     _scrollController = widget.scrollController ?? ScrollController();
-    _animationController = AnimationController(duration: Duration(milliseconds: 2000), vsync: this);
+    _animationController = AnimationController(
+        duration: Duration(milliseconds: 2000), vsync: this);
     _sizeAnimationController =
         AnimationController(duration: Duration(milliseconds: 200), vsync: this);
   }
@@ -77,14 +79,17 @@ class _RefresherState extends State<Refresher> with TickerProviderStateMixin {
         });
       });
     }
-    if (_show && _sizeAnimationController.value == 0.0) _sizeAnimationController.value = 1.0;
-    _tempRefreshController.thickness = 4.0 * _height / _maxHeight;
 
-//    print("build => $_refreshing && $_show && ${widget.vanishAfterDrag} ${_refreshing && !_show && !widget.vanishAfterDrag
-//        ? "RefreshIndicatorPhysics"
-//        : _refreshing || _mayRefresh
-//        ? "BouncingScrollPhysics"
-//        : "NotBouncingScrollPhysics"}");
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      isBuilding = false;
+    });
+
+    if (_show && _sizeAnimationController.value == 0.0)
+      _sizeAnimationController.value = 1.0;
+
+    _tempRefreshController.thickness = 4.0 * _height / _maxHeight;
+    isBuilding = true;
+
     return Stack(children: [
       Column(children: [
         Visibility(
@@ -145,7 +150,7 @@ class _RefresherState extends State<Refresher> with TickerProviderStateMixin {
     if (notification.metrics.axis != Axis.vertical) return false;
 
     if (notification is ScrollStartNotification) {
-      if (!_show)
+      if (!_show && !isBuilding) {
         try {
           setState(() {
             _mayPerform = true;
@@ -153,6 +158,7 @@ class _RefresherState extends State<Refresher> with TickerProviderStateMixin {
         } on Exception catch (e) {
           print("e => $e");
         }
+      }
     }
 
     if (notification is ScrollUpdateNotification) {
@@ -191,7 +197,8 @@ class _RefresherState extends State<Refresher> with TickerProviderStateMixin {
                 _animationController.stop();
               }
               _aboutToRefresh = false;
-              _tempRefreshController.percentage = scrollPosition / _maxHeight * widget.loadingSize;
+              _tempRefreshController.percentage =
+                  scrollPosition / _maxHeight * widget.loadingSize;
             }
 
             _height = scrollPosition.clamp(0.0, _maxHeight);

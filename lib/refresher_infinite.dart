@@ -18,6 +18,8 @@ class InfiniteRefresher extends StatefulWidget {
   final InfiniteListRemote remote;
   final WidgetBuilder widgetBuilder;
   final Fetcher fetcher;
+  final int cursor;
+  final bool noMoreData;
 
   InfiniteRefresher({
     this.scrollController,
@@ -28,6 +30,8 @@ class InfiniteRefresher extends StatefulWidget {
     this.remote,
     this.widgetBuilder,
     this.fetcher,
+    this.cursor,
+    this.noMoreData,
   })  : this.vanishAfterDrag = vanishAfterDrag ?? false,
         this.loadingSize = loadingSize ?? 50.0,
         this.margin = margin ?? EdgeInsets.all(16.0);
@@ -36,7 +40,8 @@ class InfiniteRefresher extends StatefulWidget {
   _InfiniteRefresherState createState() => _InfiniteRefresherState();
 }
 
-class _InfiniteRefresherState extends State<InfiniteRefresher> with TickerProviderStateMixin {
+class _InfiniteRefresherState extends State<InfiniteRefresher>
+    with TickerProviderStateMixin {
   ScrollController _scrollController;
   double _height = 0.0;
   double _maxHeight;
@@ -51,6 +56,9 @@ class _InfiniteRefresherState extends State<InfiniteRefresher> with TickerProvid
   LoadingController _tempRefreshController = LoadingController();
   LoadingController _refreshController = LoadingController(thickness: 4.0);
   double percentage = 0.0;
+  InfiniteListRemote _remote;
+
+  InfiniteListRemote get _effectiveRemote => widget.remote ?? _remote;
 
   @override
   void initState() {
@@ -58,9 +66,29 @@ class _InfiniteRefresherState extends State<InfiniteRefresher> with TickerProvid
     _maxHeight = widget.loadingSize + widget.margin.vertical;
     RefreshIndicatorPhysics.height = _maxHeight;
     _scrollController = widget.scrollController ?? ScrollController();
-    _animationController = AnimationController(duration: Duration(milliseconds: 2000), vsync: this);
+    _animationController = AnimationController(
+        duration: Duration(milliseconds: 2000), vsync: this);
     _sizeAnimationController =
         AnimationController(duration: Duration(milliseconds: 200), vsync: this);
+
+    _remote = widget.remote == null ? InfiniteListRemote() : null;
+
+//    WidgetsBinding.instance.addPostFrameCallback((_) {
+//      setState(() {
+//        _refreshing = true;
+//        _show = true;
+//        _animationController.repeat();
+//      });
+//    });
+  }
+
+  @override
+  void didUpdateWidget(InfiniteRefresher oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.remote == null && oldWidget.remote != null)
+      _remote = InfiniteListRemote();
+    else if (widget.remote != null && oldWidget.remote == null)
+      _remote = null;
   }
 
   @override
@@ -83,9 +111,8 @@ class _InfiniteRefresherState extends State<InfiniteRefresher> with TickerProvid
       });
     }
 
-    print("_refreshing => $_refreshing");
-
-    if (_show && _sizeAnimationController.value == 0.0) _sizeAnimationController.value = 1.0;
+    if (_show && _sizeAnimationController.value == 0.0)
+      _sizeAnimationController.value = 1.0;
     _tempRefreshController.thickness = 4.0 * _height / _maxHeight;
 
     return Stack(children: [
@@ -112,14 +139,17 @@ class _InfiniteRefresherState extends State<InfiniteRefresher> with TickerProvid
                     child: InfiniteListView(
                       isRefreshing: _refreshing,
                       scrollController: _scrollController,
-                      scrollPhysics: _refreshing && !_show && !widget.vanishAfterDrag
+                      scrollPhysics:
+                      _refreshing && !_show && !widget.vanishAfterDrag
                           ? RefreshIndicatorPhysics()
                           : _refreshing || _mayRefresh
-                              ? AlwaysBouncingScrollPhysics()
-                              : NotBouncingScrollPhysics(),
-                      remote: widget.remote,
+                          ? AlwaysBouncingScrollPhysics()
+                          : NotBouncingScrollPhysics(),
+                      remote: _effectiveRemote,
                       widgetBuilder: widget.widgetBuilder,
                       fetcher: widget.fetcher,
+                      cursor: widget.cursor,
+                      noMoreData: widget.noMoreData,
                     ),
                   ),
                 )))
@@ -154,7 +184,8 @@ class _InfiniteRefresherState extends State<InfiniteRefresher> with TickerProvid
       if (!_show)
         try {
           //prevent error caused by infinite list view right after there is no more data while trying to refetch it
-          if ((notification.metrics.pixels < notification.metrics.maxScrollExtent &&
+          if ((notification.metrics.pixels <
+              notification.metrics.maxScrollExtent &&
               notification.metrics.maxScrollExtent > 0.0) ||
               notification.metrics.maxScrollExtent == 0.0)
             setState(() {
@@ -184,7 +215,7 @@ class _InfiniteRefresherState extends State<InfiniteRefresher> with TickerProvid
                   if (widget.onRefresh != null)
                     widget.onRefresh().then((_) {
                       if (this.mounted) _animationController.stop();
-
+                      _effectiveRemote.resetWithoutFetch();
                       if (this.mounted)
                         _sizeAnimationController.reverse(from: 1.0).then((_) {
                           if (this.mounted)
@@ -201,7 +232,8 @@ class _InfiniteRefresherState extends State<InfiniteRefresher> with TickerProvid
                 _animationController.stop();
               }
               _aboutToRefresh = false;
-              _tempRefreshController.percentage = scrollPosition / _maxHeight * widget.loadingSize;
+              _tempRefreshController.percentage =
+                  scrollPosition / _maxHeight * widget.loadingSize;
             }
 
             _height = scrollPosition.clamp(0.0, _maxHeight);

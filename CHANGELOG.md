@@ -1,3 +1,14 @@
+## 1.0.0+1
+
+* Fix scroll to the max
+* Fix refresher
+
+## 1.0.0
+
+* Stable version
+* Add cursor and noMoreData arguments on InfiniteListView and RefresherInfinite to resume progress whenever changing tab
+* Add flag should scroll to the max whenever scrolling to bottom most
+
 ## 0.0.4+2
 
 * Refresher and Infinite Refresher only supports vertical axis

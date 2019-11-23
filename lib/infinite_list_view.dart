@@ -19,6 +19,8 @@ class InfiniteListView extends StatefulWidget {
   final ScrollController scrollController;
   final ScrollPhysics scrollPhysics;
   final bool isRefreshing;
+  final int cursor;
+  final bool noMoreData;
 
   InfiniteListView({
     this.remote,
@@ -27,6 +29,8 @@ class InfiniteListView extends StatefulWidget {
     this.scrollController,
     this.scrollPhysics,
     bool isRefreshing,
+    this.cursor,
+    this.noMoreData,
   })  : assert(widgetBuilder != null),
         assert(fetcher != null),
         this.isRefreshing = isRefreshing ?? false;
@@ -35,7 +39,8 @@ class InfiniteListView extends StatefulWidget {
   _InfiniteListViewState createState() => _InfiniteListViewState();
 }
 
-class _InfiniteListViewState extends State<InfiniteListView> with SingleTickerProviderStateMixin {
+class _InfiniteListViewState extends State<InfiniteListView>
+    with SingleTickerProviderStateMixin {
   ScrollController _scrollController;
   bool isPerformingRequest = false;
   int _cursor = 0;
@@ -44,6 +49,7 @@ class _InfiniteListViewState extends State<InfiniteListView> with SingleTickerPr
   AnimationController anim;
   bool firstBuild = true;
   bool _mayRefresh = true;
+  bool _shouldScrollToTheMax = false;
 
   @override
   void initState() {
@@ -53,6 +59,10 @@ class _InfiniteListViewState extends State<InfiniteListView> with SingleTickerPr
 
     _scrollController = widget.scrollController ??
         ScrollController(keepScrollOffset: false, initialScrollOffset: 0.0);
+
+    _cursor = widget.cursor ?? 0;
+
+    _noMoreData = widget.noMoreData ?? false;
   }
 
   _reset(BuildContext context) {
@@ -96,14 +106,18 @@ class _InfiniteListViewState extends State<InfiniteListView> with SingleTickerPr
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (isPerformingRequest && _scrollController.hasClients && !anim.isAnimating) {
+      if (isPerformingRequest &&
+          _scrollController.hasClients &&
+          !anim.isAnimating) {
         anim.repeat();
-
-        _scrollController.animateTo(
-          _scrollController.position.maxScrollExtent,
-          curve: Curves.easeOut,
-          duration: const Duration(milliseconds: 200),
-        );
+        if (_shouldScrollToTheMax) {
+          _shouldScrollToTheMax = false;
+          _scrollController.animateTo(
+            _scrollController.position.maxScrollExtent,
+            curve: Curves.easeOut,
+            duration: const Duration(milliseconds: 200),
+          );
+        }
       }
     });
 
@@ -111,8 +125,10 @@ class _InfiniteListViewState extends State<InfiniteListView> with SingleTickerPr
       _scrollController.addListener(() {
         if (!widget.isRefreshing &&
             _scrollController.position.maxScrollExtent > 0.0 &&
-            _scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+            _scrollController.position.pixels ==
+                _scrollController.position.maxScrollExtent) {
           _tryFetchMore(context);
+          _shouldScrollToTheMax = true;
         }
       });
 
@@ -127,7 +143,9 @@ class _InfiniteListViewState extends State<InfiniteListView> with SingleTickerPr
         };
       }
 
-      _tryFetchMore(context);
+      if (_cursor == 0) {
+        _tryFetchMore(context);
+      }
       firstBuild = false;
     }
 

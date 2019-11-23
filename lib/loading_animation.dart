@@ -74,7 +74,11 @@ class LoadingPainter extends CustomPainter {
   final double maxHeight;
 
   LoadingPainter(
-      {this.lineColor, this.progressColor, this.completePercent, this.thickness, this.maxHeight});
+      {this.lineColor,
+      this.progressColor,
+      this.completePercent,
+      this.thickness,
+      this.maxHeight});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -102,11 +106,12 @@ class LoadingPainter extends CustomPainter {
     double arcAngle = 2 * pi * (arc / maxHeight);
 
     double startPercentage =
-        ((completePercent - (maxHeight - factor)) * maxHeight / factor).clamp(0.0, maxHeight);
+        ((completePercent - (maxHeight - factor)) * maxHeight / factor)
+            .clamp(0.0, maxHeight);
     double startAngle = lerpDouble(-0.5, 1.5, startPercentage / maxHeight);
 
-    canvas.drawArc(Rect.fromCircle(center: center, radius: radius), pi * startAngle, arcAngle,
-        false, complete);
+    canvas.drawArc(Rect.fromCircle(center: center, radius: radius),
+        pi * startAngle, arcAngle, false, complete);
   }
 
   @override
@@ -119,13 +124,15 @@ class LoadingController extends ValueNotifier<LoadingValue> {
   double get percentage => value.percentage;
 
   set percentage(double newPercentage) {
-    value = value.copyWith(percentage: newPercentage, thickness: this.thickness);
+    value =
+        value.copyWith(percentage: newPercentage, thickness: this.thickness);
   }
 
   double get thickness => value.thickness;
 
   set thickness(double newThickness) {
-    value = value.copyWith(percentage: this.percentage, thickness: newThickness);
+    value =
+        value.copyWith(percentage: this.percentage, thickness: newThickness);
   }
 
   LoadingController({double percentage, double thickness})
@@ -136,7 +143,8 @@ class LoadingController extends ValueNotifier<LoadingValue> {
                 thickness: thickness ?? 1.0,
               ));
 
-  LoadingController.fromValue(LoadingValue value) : super(value ?? LoadingValue.empty);
+  LoadingController.fromValue(LoadingValue value)
+      : super(value ?? LoadingValue.empty);
 
   void clear() {
     value = LoadingValue.empty;
@@ -154,7 +162,8 @@ class LoadingValue {
 
   LoadingValue copyWith({double percentage, double thickness}) {
     return new LoadingValue(
-        percentage: percentage ?? this.percentage, thickness: thickness ?? this.thickness);
+        percentage: percentage ?? this.percentage,
+        thickness: thickness ?? this.thickness);
   }
 
   LoadingValue.fromValue(LoadingValue copy)
@@ -170,7 +179,8 @@ class LoadingValue {
     if (identical(this, other)) return true;
     if (other is! LoadingValue) return false;
     final LoadingValue typedOther = other;
-    return typedOther.percentage == percentage && typedOther.thickness == thickness;
+    return typedOther.percentage == percentage &&
+        typedOther.thickness == thickness;
   }
 
   @override
