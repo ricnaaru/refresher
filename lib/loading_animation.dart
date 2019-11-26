@@ -11,18 +11,17 @@ class LoadingAnimation extends StatefulWidget {
   final double size;
   final EdgeInsets margin;
 
-  LoadingAnimation(
-      {Color lineColor,
-      Color progressColor,
-      double percentage,
-      double thickness,
-      LoadingController controller,
-      this.anim,
-      double size,
-      EdgeInsets margin})
+  LoadingAnimation({Color lineColor,
+    Color progressColor,
+    double percentage,
+    double thickness,
+    LoadingController controller,
+    this.anim,
+    double size,
+    EdgeInsets margin})
       : assert(controller == null || (percentage == null && thickness == null)),
-        this.lineColor = lineColor ?? Colors.white,
-        this.progressColor = progressColor ?? Colors.amber,
+        this.lineColor = lineColor ?? LoadingAnimation.defaultLineColor,
+        this.progressColor = progressColor ?? LoadingAnimation.defaultProgressColor,
         this.size = size ?? 100.0,
         this.margin = margin ?? EdgeInsets.all(0.0),
         this.controller = controller ??
@@ -33,6 +32,9 @@ class LoadingAnimation extends StatefulWidget {
 
   @override
   _LoadingAnimationState createState() => _LoadingAnimationState();
+
+  static Color defaultLineColor = Colors.white;
+  static Color defaultProgressColor = Colors.amber;
 }
 
 class _LoadingAnimationState extends State<LoadingAnimation> {
@@ -73,12 +75,11 @@ class LoadingPainter extends CustomPainter {
   double thickness;
   final double maxHeight;
 
-  LoadingPainter(
-      {this.lineColor,
-      this.progressColor,
-      this.completePercent,
-      this.thickness,
-      this.maxHeight});
+  LoadingPainter({this.lineColor,
+    this.progressColor,
+    this.completePercent,
+    this.thickness,
+    this.maxHeight});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -101,13 +102,13 @@ class LoadingPainter extends CustomPainter {
     double arc = completePercent <= (maxHeight * 0.5)
         ? (completePercent * maxHeight / factor)
         : ((maxHeight * 0.5) * maxHeight / factor) -
-            ((completePercent - (maxHeight * 0.5)) * maxHeight / factor);
+        ((completePercent - (maxHeight * 0.5)) * maxHeight / factor);
 
     double arcAngle = 2 * pi * (arc / maxHeight);
 
     double startPercentage =
-        ((completePercent - (maxHeight - factor)) * maxHeight / factor)
-            .clamp(0.0, maxHeight);
+    ((completePercent - (maxHeight - factor)) * maxHeight / factor)
+        .clamp(0.0, maxHeight);
     double startAngle = lerpDouble(-0.5, 1.5, startPercentage / maxHeight);
 
     canvas.drawArc(Rect.fromCircle(center: center, radius: radius),
@@ -137,11 +138,11 @@ class LoadingController extends ValueNotifier<LoadingValue> {
 
   LoadingController({double percentage, double thickness})
       : super(percentage == null && thickness == null
-            ? LoadingValue.empty
-            : new LoadingValue(
-                percentage: percentage ?? 0.0,
-                thickness: thickness ?? 1.0,
-              ));
+      ? LoadingValue.empty
+      : new LoadingValue(
+    percentage: percentage ?? 0.0,
+    thickness: thickness ?? 1.0,
+  ));
 
   LoadingController.fromValue(LoadingValue value)
       : super(value ?? LoadingValue.empty);
