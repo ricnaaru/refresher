@@ -1,3 +1,7 @@
+## 15 februari 2020
+
+* add refresher builder
+
 ## 1.0.0+1
 
 * Fix scroll to the max
