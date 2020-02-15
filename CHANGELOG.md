@@ -2,6 +2,10 @@
 
 * add refresher builder
 
+## 1.0.0+2
+
+* Add LoadingAnimation.defaultLineColor and LoadingAnimation.defaultProgressColor
+
 ## 1.0.0+1
 
 * Fix scroll to the max
