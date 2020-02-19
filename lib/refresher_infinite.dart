@@ -1,13 +1,10 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:refresher/always_bouncing_physics.dart';
 import 'package:refresher/infinite_list_view.dart';
 import 'package:refresher/loading_animation.dart';
 import 'package:refresher/not_bouncing_physics.dart';
 import 'package:refresher/refresh_indicator_physics.dart';
-
-typedef Future<void> RefreshCallback();
+import 'package:refresher/typedefs.dart';
 
 class InfiniteRefresher extends StatefulWidget {
   final RefreshCallback onRefresh;
@@ -87,8 +84,7 @@ class _InfiniteRefresherState extends State<InfiniteRefresher>
     super.didUpdateWidget(oldWidget);
     if (widget.remote == null && oldWidget.remote != null)
       _remote = InfiniteListRemote();
-    else if (widget.remote != null && oldWidget.remote == null)
-      _remote = null;
+    else if (widget.remote != null && oldWidget.remote == null) _remote = null;
   }
 
   @override
@@ -140,11 +136,11 @@ class _InfiniteRefresherState extends State<InfiniteRefresher>
                       isRefreshing: _refreshing,
                       scrollController: _scrollController,
                       scrollPhysics:
-                      _refreshing && !_show && !widget.vanishAfterDrag
-                          ? RefreshIndicatorPhysics()
-                          : _refreshing || _mayRefresh
-                          ? AlwaysBouncingScrollPhysics()
-                          : NotBouncingScrollPhysics(),
+                          _refreshing && !_show && !widget.vanishAfterDrag
+                              ? RefreshIndicatorPhysics()
+                              : _refreshing || _mayRefresh
+                                  ? AlwaysBouncingScrollPhysics()
+                                  : NotBouncingScrollPhysics(),
                       remote: _effectiveRemote,
                       widgetBuilder: widget.widgetBuilder,
                       fetcher: widget.fetcher,
@@ -185,8 +181,8 @@ class _InfiniteRefresherState extends State<InfiniteRefresher>
         try {
           //prevent error caused by infinite list view right after there is no more data while trying to refetch it
           if ((notification.metrics.pixels <
-              notification.metrics.maxScrollExtent &&
-              notification.metrics.maxScrollExtent > 0.0) ||
+                      notification.metrics.maxScrollExtent &&
+                  notification.metrics.maxScrollExtent > 0.0) ||
               notification.metrics.maxScrollExtent == 0.0)
             setState(() {
               _mayPerform = true;

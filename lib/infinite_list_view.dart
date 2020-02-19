@@ -3,9 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:refresher/loading_animation.dart';
 import 'package:refresher/not_bouncing_physics.dart';
-
-typedef void ResetFunction();
-typedef Future<bool> Fetcher(BuildContext context, int cursor);
+import 'package:refresher/typedefs.dart';
 
 class InfiniteListRemote {
   ResetFunction reset;

@@ -1,3 +1,7 @@
+## 1.0.1+1 - 19 februari 2020
+
+* merge all typedefs
+
 ## 1.0.1 - 15 februari 2020
 
 * add refresher builder

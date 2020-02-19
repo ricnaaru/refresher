@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:refresher/always_bouncing_physics.dart';
 import 'package:refresher/infinite_list_view.dart';
@@ -7,9 +5,7 @@ import 'package:refresher/infinite_list_view_builder.dart';
 import 'package:refresher/loading_animation.dart';
 import 'package:refresher/not_bouncing_physics.dart';
 import 'package:refresher/refresh_indicator_physics.dart';
-
-typedef Future<void> RefreshCallback();
-typedef int ItemCountGetter();
+import 'package:refresher/typedefs.dart';
 
 class InfiniteRefresherBuilder extends StatefulWidget {
   final RefreshCallback onRefresh;

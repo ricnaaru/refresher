@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:refresher/infinite_list_view.dart';
 import 'package:refresher/loading_animation.dart';
 import 'package:refresher/not_bouncing_physics.dart';
+import 'package:refresher/typedefs.dart';
 
 class InfiniteListViewBuilder extends StatefulWidget {
   final InfiniteListRemote remote;
